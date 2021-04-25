@@ -33,9 +33,9 @@ public class UserDAOImpl implements UserDao {
 	 EntityManager em= EntityM.getEm();
 
  
-		Query q = em.createQuery("Select c from User c where c.email= :clientEmail and c.motPasse= :clientMDP");
-		q.setParameter("clientEmail",u.getEmail());
-		q.setParameter("clientMDP",u.getMotdepasse());
+		Query q = em.createQuery("Select c from User c where c.email= :email and c.motdepasse= :mdp");
+		q.setParameter("email",u.getEmail());
+		q.setParameter("mdp",u.getMotdepasse());
 
 		User client = (User) q.getResultList().stream().findFirst().orElse(null);
                 // or :
@@ -52,8 +52,8 @@ public class UserDAOImpl implements UserDao {
 	 EntityManager em= EntityM.getEm();
 
 	 
-		Query q = em.createQuery("Select c from User c where c.email= :clientEmail");
-		q.setParameter("clientEmail",email);
+		Query q = em.createQuery("Select c from User c where c.email= :email");
+		q.setParameter("email",email);
 		
 
 		User user = (User) q.getResultList().stream().findFirst().orElse(null);
